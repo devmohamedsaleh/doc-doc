@@ -1,17 +1,132 @@
-import 'package:docdoc/core/theming/colors_manager.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TextStyles {
-   static TextStyle font24Black700Weight = TextStyle(
-     fontSize: 24.sp,
-     fontWeight: FontWeight.w700,
-     color: Colors.black
+import 'package:flutter/material.dart';
+
+import 'colors_manager.dart';
+class TxtStyle {
+   static TextStyle size32Weight700Blue = TextStyle(
+       fontSize: 32,
+       fontWeight: FontWeight.w700,
+       color: ColorsManager.primaryColor
+   );
+   static TextStyle size10Weight400Grey = TextStyle(
+       fontSize: 10,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.grey
+   );
+   static TextStyle size16Weight600White = TextStyle(
+       fontSize: 16,
+       fontWeight: FontWeight.w600,
+       color: ColorsManager.white
+   );
+   static TextStyle primaryTxtStyle = TextStyle(
+       fontSize: 24,
+       fontWeight: FontWeight.w700,
+       color: ColorsManager.primaryColor
+   );
+   static TextStyle size14Weight400Grey = TextStyle(
+       fontSize: 14,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.grey
+   );
+   static TextStyle size14Weight500hintTxtColor = TextStyle(
+       fontSize: 14,
+       fontWeight: FontWeight.w500,
+       color: ColorsManager.hintTxtColor
+   );
+   static TextStyle size12Weight400moreGrey = TextStyle(
+       fontSize: 12,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.moreGrey
+   );
+   static TextStyle size12Weight400Primary = TextStyle(
+       fontSize: 12,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.primaryColor
+   );
+   static TextStyle size11Weight400MoreGrey = TextStyle(
+       fontSize: 11,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.moreGrey
+   );
+   static TextStyle size11Weight400Black= TextStyle(
+       fontSize: 11,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.black
+   );
+   static TextStyle size11Weight400Primary= TextStyle(
+       fontSize: 11,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.primaryColor
+   );
+   static TextStyle size18Weight700Black= TextStyle(
+       fontSize: 18,
+       fontWeight: FontWeight.w700,
+       color: ColorsManager.black
+   );
+   static TextStyle size11Weight400BlackGrey= TextStyle(
+       fontSize: 11,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.blackGrey
+   );static TextStyle size18Weight500White= TextStyle(
+       fontSize: 18,
+       fontWeight: FontWeight.w500,
+       color: ColorsManager.white
+   );
+   static TextStyle size13Weight400Primary= TextStyle(
+       fontSize: 13,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.primaryColor
+   );
+   static TextStyle size18Weight600Black= TextStyle(
+       fontSize: 18,
+       fontWeight: FontWeight.w600,
+       color: ColorsManager.black
+   );
+   static TextStyle size12Weight400BMoreBlack= TextStyle(
+       fontSize: 12,
+       fontWeight: FontWeight.w400,
+       color: ColorsManager.moreBlack
+   );
+   static TextStyle size12Weight500Grey= TextStyle(
+       fontSize: 12,
+       fontWeight: FontWeight.w500,
+       color: ColorsManager.grey
    );
 
-   static TextStyle font32BlueBold = TextStyle(
-       fontSize: 32.sp,
+   static TextStyle size16Weight500Grey= TextStyle(
+       fontSize: 16,
+       fontWeight: FontWeight.w500,
+       color: ColorsManager.txtGrey
+   );
+
+   static TextStyle size12Weight500Green= TextStyle(
+       fontSize: 12,
        fontWeight: FontWeight.bold,
-       color: ColorsManager.primaryColors
+       color: ColorsManager.green
+   );
+   static TextStyle size16Weight500White= TextStyle(
+       fontSize: 16,
+       fontWeight: FontWeight.bold,
+       color: ColorsManager.white
+   );
+   static TextStyle size18Weight500Grey= TextStyle(
+       fontSize: 18,
+       fontWeight: FontWeight.bold,
+       color: ColorsManager.txtGrey
+   );
+   static TextStyle size16Weight500MoreGrey= TextStyle(
+       fontSize: 16,
+       fontWeight: FontWeight.bold,
+       color: ColorsManager.grey
+   );
+   static TextStyle size16Weight600DarkGrey= TextStyle(
+       fontSize: 16,
+       fontWeight: FontWeight.w600,
+       color: ColorsManager.txtDarkGrey
+   );
+   static TextStyle size20BoldBlack= TextStyle(
+       fontSize: 20,
+       fontWeight: FontWeight.bold,
+       color: ColorsManager.black
    );
 }

@@ -19,10 +19,10 @@ class DocApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouter.generateRoute,
-          initialRoute: Routes.onBoarding,
+          initialRoute: Routes.home,
           title: 'Doc App',
           theme: ThemeData(
-            primaryColor: ColorsManager.primaryColors,
+            primaryColor: ColorsManager.primaryColor,
             scaffoldBackgroundColor: Colors.white,
           ),
         );

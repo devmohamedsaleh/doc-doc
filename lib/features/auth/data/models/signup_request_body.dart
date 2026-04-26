@@ -2,7 +2,7 @@ class SignupRequestBody {
   final String name;
   final String email;
   final String phone;
-  final int gender;
+  final String gender;
   final String password;
   final String passwordConfirmation;
 
