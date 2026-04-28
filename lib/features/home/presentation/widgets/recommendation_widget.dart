@@ -1,10 +1,12 @@
 import 'package:docdoc/core/theming/colors_manager.dart';
 import 'package:docdoc/core/theming/styles.dart';
+import 'package:docdoc/features/home/data/model/doctor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecommendationWidget extends StatelessWidget {
-  const RecommendationWidget({super.key});
+  DoctorModel doctorModel;
+  RecommendationWidget({super.key, required this.doctorModel});
 
   @override
   Widget build(BuildContext context) {
@@ -83,10 +85,10 @@ class RecommendationWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 12.h,),
-                  Text("Dr. Marci Maiden",style: TxtStyle.size18Weight500Grey,),
-                  Text("Internist Specialist ",style: TxtStyle.size16Weight500MoreGrey,),
-                  Text("Consultant ",style: TxtStyle.size16Weight500MoreGrey,),
-                  Text("20\$",style: TxtStyle.size12Weight500Green,)
+                  Text(doctorModel.name,style: TxtStyle.size18Weight500Grey,),
+                  Text(doctorModel.specialization.name,style: TxtStyle.size16Weight500MoreGrey,),
+                  Text(doctorModel.degree,style: TxtStyle.size16Weight500MoreGrey,),
+                  Text("${doctorModel.id}\$",style: TxtStyle.size12Weight500Green,)
                 ],
               ),
             ),

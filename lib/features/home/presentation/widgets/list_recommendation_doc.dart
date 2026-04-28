@@ -1,9 +1,12 @@
+import 'package:docdoc/features/home/data/model/doctor_model.dart';
+import 'package:docdoc/features/home/data/model/specialization_model.dart';
 import 'package:docdoc/features/home/presentation/widgets/recommendation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListRecommendationDoc extends StatelessWidget {
-  const ListRecommendationDoc({super.key});
+  List<DoctorModel> doctorModel;
+  ListRecommendationDoc({super.key, required this.doctorModel});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class ListRecommendationDoc extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
 
-        return RecommendationWidget();
+        return RecommendationWidget(doctorModel: doctorModel[index],);
       }),
     );
   }

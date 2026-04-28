@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpecializationsWidget extends StatelessWidget {
-  const SpecializationsWidget({super.key});
+  String title;
+  SpecializationsWidget({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class SpecializationsWidget extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Text("Pediatric Specialist",
+        child: Text(title,
         style: TxtStyle.size16Weight600DarkGrey,
         ),
       ),
