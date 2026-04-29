@@ -6,23 +6,46 @@ import 'package:docdoc/core/errors/server_failure.dart';
 import 'package:docdoc/features/all_doctors/data/model/all_doctors_response_model.dart';
 
 abstract class AllDoctorsRemoteDataSource {
-  Future<Either<Failure, AllDoctorsResponseModel>> AllDoctors();
+  Future<Either<Failure, AllDoctorsResponseModel>> allDoctors();
+
+  Future<Either<Failure, AllDoctorsResponseModel>> searchDoctors(String name);
 }
 
-class ImpAllDoctorsRemoteDataSource
-    implements AllDoctorsRemoteDataSource {
-  Dio dio;
+class ImpAllDoctorsRemoteDataSource implements AllDoctorsRemoteDataSource {
+  final Dio dio;
 
   ImpAllDoctorsRemoteDataSource(this.dio);
 
   @override
-  Future<Either<Failure, AllDoctorsResponseModel>> AllDoctors() async {
+  Future<Either<Failure, AllDoctorsResponseModel>> allDoctors() async {
     try {
       final response = await dio.get(ApiConst.getAllDocs);
 
       final allDoctorResponse = AllDoctorsResponseModel.fromJson(response.data);
 
       return Right(allDoctorResponse);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, AllDoctorsResponseModel>> searchDoctors(
+      String name,
+      ) async {
+    try {
+      final response = await dio.get(
+        ApiConst.doctorSearch,
+        queryParameters: {
+          'name': name,
+        },
+      );
+
+      final searchResponse = AllDoctorsResponseModel.fromJson(response.data);
+
+      return Right(searchResponse);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioException(e));
     } catch (e) {

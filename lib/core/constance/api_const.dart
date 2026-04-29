@@ -6,5 +6,7 @@ class ApiConst {
  static const String register = "$baseUrl/auth/register";
  static const String getHome = "$baseUrl/home/index";
  static const String getAllDocs = "$baseUrl/doctor/index";
+ static const String doctorSearch = "/doctor/doctor-search";
+
 
 }

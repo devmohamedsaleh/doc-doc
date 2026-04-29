@@ -71,7 +71,7 @@ class DoctorWidget extends StatelessWidget {
                   SizedBox(height: 4.h),
 
                   Text(
-                    "${doctorModel.id}\$",
+                    "${doctorModel.appointPrice}\$",
                     style: TxtStyle.size12Weight500Green,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

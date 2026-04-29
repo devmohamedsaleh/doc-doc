@@ -4,10 +4,17 @@ import 'package:docdoc/features/all_doctors/data/datasource/remote_data_source.d
 import 'package:docdoc/features/all_doctors/data/model/all_doctors_response_model.dart';
 
 class AllDoctorsRepo {
-  AllDoctorsRemoteDataSource allDoctorsRemoteDataSource;
+  final AllDoctorsRemoteDataSource allDoctorsRemoteDataSource;
+
   AllDoctorsRepo(this.allDoctorsRemoteDataSource);
 
-  Future<Either<Failure , AllDoctorsResponseModel>> allDoctors ()async {
-    return await allDoctorsRemoteDataSource.AllDoctors();
+  Future<Either<Failure, AllDoctorsResponseModel>> allDoctors() async {
+    return await allDoctorsRemoteDataSource.allDoctors();
+  }
+
+  Future<Either<Failure, AllDoctorsResponseModel>> searchDoctors(
+      String name,
+      ) async {
+    return await allDoctorsRemoteDataSource.searchDoctors(name);
   }
 }

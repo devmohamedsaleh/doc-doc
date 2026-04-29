@@ -14,14 +14,11 @@ class AllDocScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      getIt<AllDoctorsCubit>()
-        ..allDoctors(),
-      child: AllDocsView(),
+      create: (context) => getIt<AllDoctorsCubit>()..allDoctors(),
+      child: const AllDocsView(),
     );
   }
 }
-
 
 class AllDocsView extends StatelessWidget {
   const AllDocsView({super.key});
@@ -33,29 +30,49 @@ class AllDocsView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.w),
           child: Column(
-            spacing: 16,
             children: [
-              SearchTextFormField(),
-              BlocBuilder<AllDoctorsCubit, AllDoctorsState>(
-                builder: (context, state) {
-                  return state.when(
+              SizedBox(height: 16.h),
 
-                      initial: (){
-                        return SizedBox();
+              SearchTextFormField(
+                onChanged: (value) {
+                  context.read<AllDoctorsCubit>().onSearchChanged(value);
+                },
+              ),
+
+              SizedBox(height: 16.h),
+
+              Expanded(
+                child: BlocBuilder<AllDoctorsCubit, AllDoctorsState>(
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () {
+                        return const SizedBox();
                       },
-                      loading: (){
-                        return Center(
+                      loading: () {
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       },
-                      success: (data){
-                        return Expanded(child: DoctorList(doctors: data,));
+                      success: (doctors) {
+                        if (doctors.isEmpty) {
+                          return const Center(
+                            child: Text("No doctors found"),
+                          );
+                        }
+
+                        return DoctorList(
+                          doctors: doctors,
+                        );
                       },
-                      error: (message){
-                        return Center(child: Text(message));
-                      });
-                },
-              )
+                      error: (message) {
+                        return Center(
+                          child: Text(message),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

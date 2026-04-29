@@ -88,7 +88,7 @@ class RecommendationWidget extends StatelessWidget {
                   Text(doctorModel.name,style: TxtStyle.size18Weight500Grey,),
                   Text(doctorModel.specialization.name,style: TxtStyle.size16Weight500MoreGrey,),
                   Text(doctorModel.degree,style: TxtStyle.size16Weight500MoreGrey,),
-                  Text("${doctorModel.id}\$",style: TxtStyle.size12Weight500Green,)
+                  Text("${doctorModel.appointPrice}\$",style: TxtStyle.size12Weight500Green,)
                 ],
               ),
             ),
