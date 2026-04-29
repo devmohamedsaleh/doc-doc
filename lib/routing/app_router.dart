@@ -1,3 +1,4 @@
+import 'package:docdoc/features/all_doctors/presentation/screen/all_doc_screen.dart';
 import 'package:docdoc/features/auth/presentation/screens/login_screen.dart';
 import 'package:docdoc/routing/routes.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,10 @@ class AppRouter {
       return MaterialPageRoute(
         builder: (_) => const HomeScreen(),
       );
-
+      case Routes.allDocs:
+        return MaterialPageRoute(
+          builder: (_) => const AllDocScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

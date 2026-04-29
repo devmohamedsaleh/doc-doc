@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:docdoc/core/constance/api_const.dart';
+import 'package:docdoc/features/all_doctors/data/datasource/remote_data_source.dart';
+import 'package:docdoc/features/all_doctors/data/repo/all_doctors_repo.dart';
+import 'package:docdoc/features/all_doctors/logic/cubit.dart';
 import 'package:docdoc/features/auth/logic/signup_cubit/cubit.dart';
 import 'package:docdoc/features/home/data/datasource/remote_data_source.dart';
 import 'package:docdoc/features/home/data/repo/get_home_repo.dart';
@@ -59,6 +62,9 @@ void setupLocator() {
   getIt.registerLazySingleton<HomeRemoteDataSource>(
     () => ImpHomeRemoteDataSource(getIt<Dio>()),
   );
+  getIt.registerLazySingleton<AllDoctorsRemoteDataSource>(
+        () => ImpAllDoctorsRemoteDataSource(getIt<Dio>(),),
+  );
 
   // Repo
   getIt.registerLazySingleton<AuthRepo>(
@@ -67,10 +73,14 @@ void setupLocator() {
   getIt.registerLazySingleton<GetHomeRepo>(
     () => GetHomeRepo(getIt<HomeRemoteDataSource>()),
   );
+  getIt.registerLazySingleton<AllDoctorsRepo>(
+        () => AllDoctorsRepo(getIt<AllDoctorsRemoteDataSource>()),
+  );
+
 
   // Cubits
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<AuthRepo>()));
-
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<GetHomeRepo>()));
+  getIt.registerFactory<AllDoctorsCubit>(() => AllDoctorsCubit(getIt<AllDoctorsRepo>()));
 }
