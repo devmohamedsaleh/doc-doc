@@ -3,6 +3,9 @@ import 'package:docdoc/core/constance/api_const.dart';
 import 'package:docdoc/features/all_doctors/data/datasource/remote_data_source.dart';
 import 'package:docdoc/features/all_doctors/data/repo/all_doctors_repo.dart';
 import 'package:docdoc/features/all_doctors/logic/cubit.dart';
+import 'package:docdoc/features/appointment/data/datasource/remote_data_source.dart';
+import 'package:docdoc/features/appointment/data/repo/appointments_repo.dart';
+import 'package:docdoc/features/appointment/logic/cubit.dart';
 import 'package:docdoc/features/auth/logic/signup_cubit/cubit.dart';
 import 'package:docdoc/features/home/data/datasource/remote_data_source.dart';
 import 'package:docdoc/features/home/data/repo/get_home_repo.dart';
@@ -21,12 +24,12 @@ final getIt = GetIt.instance;
 void setupLocator() {
   // Secure Storage
   getIt.registerLazySingleton<FlutterSecureStorage>(
-    () => const FlutterSecureStorage(),
+        () => const FlutterSecureStorage(),
   );
 
   // Token Storage
   getIt.registerLazySingleton<TokenStorage>(
-    () => TokenStorage(getIt<FlutterSecureStorage>()),
+        () => TokenStorage(getIt<FlutterSecureStorage>()),
   );
 
   // Dio
@@ -55,32 +58,61 @@ void setupLocator() {
     return dio;
   });
 
-  // Remote Data Source
+  // Remote Data Sources
   getIt.registerLazySingleton<AuthRemoteDataSource>(
-    () => AuthRemoteDataSourceImpl(getIt<Dio>(), getIt<TokenStorage>()),
-  );
-  getIt.registerLazySingleton<HomeRemoteDataSource>(
-    () => ImpHomeRemoteDataSource(getIt<Dio>()),
-  );
-  getIt.registerLazySingleton<AllDoctorsRemoteDataSource>(
-        () => ImpAllDoctorsRemoteDataSource(getIt<Dio>(),),
+        () => AuthRemoteDataSourceImpl(
+      getIt<Dio>(),
+      getIt<TokenStorage>(),
+    ),
   );
 
-  // Repo
+  getIt.registerLazySingleton<HomeRemoteDataSource>(
+        () => ImpHomeRemoteDataSource(getIt<Dio>()),
+  );
+
+  getIt.registerLazySingleton<AllDoctorsRemoteDataSource>(
+        () => ImpAllDoctorsRemoteDataSource(getIt<Dio>()),
+  );
+
+  getIt.registerLazySingleton<AppointmentRemoteDataSource>(
+        () => ImpAppointmentRemoteDataSource(getIt<Dio>()),
+  );
+
+  // Repos
   getIt.registerLazySingleton<AuthRepo>(
-    () => AuthRepo(getIt<AuthRemoteDataSource>()),
+        () => AuthRepo(getIt<AuthRemoteDataSource>()),
   );
+
   getIt.registerLazySingleton<GetHomeRepo>(
-    () => GetHomeRepo(getIt<HomeRemoteDataSource>()),
+        () => GetHomeRepo(getIt<HomeRemoteDataSource>()),
   );
+
   getIt.registerLazySingleton<AllDoctorsRepo>(
         () => AllDoctorsRepo(getIt<AllDoctorsRemoteDataSource>()),
   );
 
+  getIt.registerLazySingleton<AppointmentsRepo>(
+        () => AppointmentsRepo(getIt<AppointmentRemoteDataSource>()),
+  );
 
   // Cubits
-  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<AuthRepo>()));
-  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<AuthRepo>()));
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt<GetHomeRepo>()));
-  getIt.registerFactory<AllDoctorsCubit>(() => AllDoctorsCubit(getIt<AllDoctorsRepo>()));
+  getIt.registerFactory<LoginCubit>(
+        () => LoginCubit(getIt<AuthRepo>()),
+  );
+
+  getIt.registerFactory<SignUpCubit>(
+        () => SignUpCubit(getIt<AuthRepo>()),
+  );
+
+  getIt.registerFactory<HomeCubit>(
+        () => HomeCubit(getIt<GetHomeRepo>()),
+  );
+
+  getIt.registerFactory<AllDoctorsCubit>(
+        () => AllDoctorsCubit(getIt<AllDoctorsRepo>()),
+  );
+
+  getIt.registerFactory<AppointmentCubit>(
+        () => AppointmentCubit(getIt<AppointmentsRepo>()),
+  );
 }

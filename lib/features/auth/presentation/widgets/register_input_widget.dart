@@ -3,6 +3,7 @@ import 'package:docdoc/features/auth/logic/signup_cubit/cubit.dart';
 import 'package:docdoc/features/auth/logic/signup_cubit/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_txt_field.dart';
@@ -63,35 +64,47 @@ class _RegisterInputWidgetState extends State<RegisterInputWidget> {
     return Column(
       children: [
         AppTxtField(
+          hintTxt: "Full Name",
+          textEditingController: nameController,
+        ),
+
+        SizedBox(height: 14.h),
+
+        AppTxtField(
           hintTxt: "Email",
           textEditingController: emailController,
         ),
-        const SizedBox(height: 12),
-        AppTxtField(
-          hintTxt: "name",
-          textEditingController: nameController,
-        ),
-        const SizedBox(height: 12),
+
+        SizedBox(height: 14.h),
+
         AppTxtField(
           hintTxt: "Phone Number",
           textEditingController: phoneNumberController,
         ),
-        const SizedBox(height: 12),
+
+        SizedBox(height: 14.h),
+
         AppTxtField(
           hintTxt: "Gender",
           textEditingController: genderController,
         ),
-        const SizedBox(height: 12),
+
+        SizedBox(height: 14.h),
+
         PassTxtFeild(
           textEditingController: passwordController,
           hintTxt: "Password",
         ),
-        const SizedBox(height: 12),
+
+        SizedBox(height: 14.h),
+
         PassTxtFeild(
           textEditingController: passwordConfirmationController,
-          hintTxt: "Confirmation Password",
+          hintTxt: "Confirm Password",
         ),
-        const SizedBox(height: 8),
+
+        SizedBox(height: 22.h),
+
         BlocBuilder<SignUpCubit, SignupState>(
           builder: (context, state) {
             final isLoading = state.maybeWhen(

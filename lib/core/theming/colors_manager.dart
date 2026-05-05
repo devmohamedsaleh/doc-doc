@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorsManager{
-  static const Color primaryColor = Color.fromRGBO(36, 124, 255, 1);
+  static const Color primaryColor = Color.fromRGBO(39, 123,83,1);
   static const Color white = Colors.white;
   static const Color txtFeildBorderColor = Color.fromRGBO(237, 237, 237, 1);
   static const Color txtFeildFillColor = Color.fromRGBO(255, 255, 253, 1);
@@ -19,9 +19,9 @@ class ColorsManager{
   static final fillColor2= Color.fromRGBO(245, 245, 245, 1);
   static final TextColor= Color.fromRGBO(36, 36,36,1);
   static final border= Color.fromRGBO(245, 246,249,1);
-  static final txtGrey= Color.fromRGBO(41, 45,50,1);
-  static final green= Color.fromRGBO(39, 123,83,1);
-  static final lightGreen= Color.fromRGBO(39, 123,83,0.09);
-  static final green2= Color.fromRGBO(29, 120,133,1);
+  static final txtGrey = Color.fromRGBO(41, 45,50,1);
+  static final green = Color.fromRGBO(39, 123,83,1);
+  static final lightGreen = Color.fromRGBO(39, 123,83,0.09);
+  static final green2 = Color.fromRGBO(29, 120,133,1);
   static final txtDarkGrey= Color.fromRGBO(85, 91,108,1);
 }

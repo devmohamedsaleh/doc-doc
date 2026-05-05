@@ -21,7 +21,7 @@ class TxtStyle {
    static TextStyle primaryTxtStyle = TextStyle(
        fontSize: 24,
        fontWeight: FontWeight.w700,
-       color: ColorsManager.primaryColor
+       color: ColorsManager.green
    );
    static TextStyle size14Weight400Grey = TextStyle(
        fontSize: 14,
